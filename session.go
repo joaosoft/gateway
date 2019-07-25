@@ -1,4 +1,4 @@
-package session
+package auth
 
 import (
 	"sync"
@@ -8,22 +8,22 @@ import (
 	migration "github.com/joaosoft/migration/services"
 )
 
-type Session struct {
-	config        *SessionConfig
+type Auth struct {
+	config        *AuthConfig
 	isLogExternal bool
 	pm            *manager.Manager
 	logger        logger.ILogger
 	mux           sync.Mutex
 }
 
-// NewSession ...
-func NewSession(options ...SessionOption) (*Session, error) {
+// NewAuth ...
+func NewAuth(options ...AuthOption) (*Auth, error) {
 	config, simpleConfig, err := NewConfig()
 
-	service := &Session{
+	service := &Auth{
 		pm:     manager.NewManager(manager.WithRunInBackground(false)),
-		logger: logger.NewLogDefault("session", logger.WarnLevel),
-		config: config.Session,
+		logger: logger.NewLogDefault("auth", logger.WarnLevel),
+		config: config.Auth,
 	}
 
 	if service.isLogExternal {
@@ -32,13 +32,13 @@ func NewSession(options ...SessionOption) (*Session, error) {
 
 	if err != nil {
 		service.logger.Error(err.Error())
-	} else if config.Session != nil {
+	} else if config.Auth != nil {
 		service.pm.AddConfig("config_app", simpleConfig)
-		level, _ := logger.ParseLevel(config.Session.Log.Level)
+		level, _ := logger.ParseLevel(config.Auth.Log.Level)
 		service.logger.Debugf("setting log level to %s", level)
 		service.logger.Reconfigure(logger.WithLevel(level))
 	} else {
-		config.Session = &SessionConfig{
+		config.Auth = &AuthConfig{
 			Host: defaultURL,
 		}
 	}
@@ -55,16 +55,16 @@ func NewSession(options ...SessionOption) (*Session, error) {
 		return nil, err
 	}
 
-	web := service.pm.NewSimpleWebServer(config.Session.Host)
+	web := service.pm.NewSimpleWebServer(config.Auth.Host)
 
-	storage, err := NewStoragePostgres(config.Session)
+	storage, err := NewStoragePostgres(config.Auth)
 	if err != nil {
 		return nil, err
 	}
 
-	interactor := NewInteractor(config.Session, storage)
+	interactor := NewInteractor(config.Auth, storage)
 
-	controller := NewController(config.Session, interactor)
+	controller := NewController(config.Auth, interactor)
 	controller.RegisterRoutes(web)
 
 	service.pm.AddWeb("api_web", web)
@@ -73,11 +73,11 @@ func NewSession(options ...SessionOption) (*Session, error) {
 }
 
 // Start ...
-func (m *Session) Start() error {
-	return m.pm.Start()
+func (auth *Auth) Start() error {
+	return auth.pm.Start()
 }
 
 // Stop ...
-func (m *Session) Stop() error {
-	return m.pm.Stop()
+func (auth *Auth) Stop() error {
+	return auth.pm.Stop()
 }

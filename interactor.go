@@ -1,4 +1,4 @@
-package session
+package auth
 
 import (
 	"strings"
@@ -16,11 +16,11 @@ type IStorageDB interface {
 }
 
 type Interactor struct {
-	config  *SessionConfig
+	config  *AuthConfig
 	storage IStorageDB
 }
 
-func NewInteractor(config *SessionConfig, storageDB IStorageDB) *Interactor {
+func NewInteractor(config *AuthConfig, storageDB IStorageDB) *Interactor {
 	return &Interactor{
 		config:  config,
 		storage: storageDB,
@@ -32,7 +32,7 @@ func (i *Interactor) newToken(user *User) (string, error) {
 
 	claims := wst.Claims{
 		wst.ClaimsExpireAtKey: expirateAt,
-		wst.ClaimsAudienceKey: "session",
+		wst.ClaimsAudienceKey: "auth",
 		wst.ClaimsSubjectKey:  "get-token",
 		claimsIdUser:          user.IdUser,
 	}
@@ -43,7 +43,7 @@ func (i *Interactor) newRefreshToken(user *User) (string, error) {
 	jwtId, _ := uuid.NewV4()
 
 	claims := wst.Claims{
-		wst.ClaimsAudienceKey: "session",
+		wst.ClaimsAudienceKey: "auth",
 		wst.ClaimsSubjectKey:  "refresh-token",
 		claimsIdUser:          user.IdUser,
 		wst.CLaimsJwtId:       jwtId,

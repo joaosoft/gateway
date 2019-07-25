@@ -1,45 +1,45 @@
-package session
+package auth
 
 import (
 	logger "github.com/joaosoft/logger"
 	"github.com/joaosoft/manager"
 )
 
-// SessionOption ...
-type SessionOption func(client *Session)
+// AuthOption ...
+type AuthOption func(auth *Auth)
 
 // Reconfigure ...
-func (session *Session) Reconfigure(options ...SessionOption) {
+func (auth *Auth) Reconfigure(options ...AuthOption) {
 	for _, option := range options {
-		option(session)
+		option(auth)
 	}
 }
 
 // WithConfiguration ...
-func WithConfiguration(config *SessionConfig) SessionOption {
-	return func(session *Session) {
-		session.config = config
+func WithConfiguration(config *AuthConfig) AuthOption {
+	return func(auth *Auth) {
+		auth.config = config
 	}
 }
 
 // WithLogger ...
-func WithLogger(logger logger.ILogger) SessionOption {
-	return func(session *Session) {
+func WithLogger(logger logger.ILogger) AuthOption {
+	return func(auth *Auth) {
 		log = logger
-		session.isLogExternal = true
+		auth.isLogExternal = true
 	}
 }
 
 // WithLogLevel ...
-func WithLogLevel(level logger.Level) SessionOption {
-	return func(session *Session) {
+func WithLogLevel(level logger.Level) AuthOption {
+	return func(auth *Auth) {
 		log.SetLevel(level)
 	}
 }
 
 // WithManager ...
-func WithManager(mgr *manager.Manager) SessionOption {
-	return func(session *Session) {
-		session.pm = mgr
+func WithManager(mgr *manager.Manager) AuthOption {
+	return func(auth *Auth) {
+		auth.pm = mgr
 	}
 }

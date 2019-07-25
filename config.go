@@ -1,4 +1,4 @@
-package session
+package auth
 
 import (
 	"fmt"
@@ -11,11 +11,11 @@ import (
 
 // AppConfig ...
 type AppConfig struct {
-	Session *SessionConfig `json:"session"`
+	Auth *AuthConfig `json:"auth"`
 }
 
-// SessionConfig ...
-type SessionConfig struct {
+// AuthConfig ...
+type AuthConfig struct {
 	Host              string                     `json:"host"`
 	Dbr               *dbr.DbrConfig             `json:"dbr"`
 	TokenKey          string                     `json:"token_key"`

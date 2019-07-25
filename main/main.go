@@ -1,9 +1,9 @@
 package main
 
-import "session"
+import "auth"
 
 func main() {
-	m, err := session.NewSession()
+	m, err := auth.NewAuth()
 	if err != nil {
 		panic(err)
 	}

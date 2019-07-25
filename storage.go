@@ -1,15 +1,15 @@
-package session
+package auth
 
 import (
 	"github.com/joaosoft/dbr"
 )
 
 type StoragePostgres struct {
-	config *SessionConfig
+	config *AuthConfig
 	db     *dbr.Dbr
 }
 
-func NewStoragePostgres(config *SessionConfig) (*StoragePostgres, error) {
+func NewStoragePostgres(config *AuthConfig) (*StoragePostgres, error) {
 	dbr, err := dbr.New(dbr.WithConfiguration(config.Dbr))
 	if err != nil {
 		return nil, err
@@ -25,7 +25,7 @@ func (storage *StoragePostgres) GetUserByIdUserAndRefreshToken(idUser, refreshTo
 	user := &User{}
 	count, err := storage.db.
 		Select("*").
-		From("session.user").
+		From(authTableUser).
 		Where("id_user = ?", idUser).
 		Where("refresh_token = ?", refreshToken).
 		Where("active").
@@ -46,7 +46,7 @@ func (storage *StoragePostgres) GetUserByEmailAndPassword(email, password string
 	user := &User{}
 	count, err := storage.db.
 		Select("*").
-		From("session.user").
+		From(authTableUser).
 		Where("email = ?", email).
 		Where("password_hash = ?", password).
 		Where("active").
@@ -65,7 +65,7 @@ func (storage *StoragePostgres) GetUserByEmailAndPassword(email, password string
 
 func (storage *StoragePostgres) UpdateUserRefreshToken(idUser, refreshToken string) error {
 	result, err := storage.db.
-		Update("session.user").
+		Update(authTableUser).
 		Set("refresh_token", refreshToken).
 		Where("id_user = ?", idUser).
 		Where("active").

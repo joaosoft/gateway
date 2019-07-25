@@ -1,4 +1,4 @@
-package session
+package auth
 
 import logger "github.com/joaosoft/logger"
 

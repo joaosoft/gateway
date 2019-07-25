@@ -1,5 +1,5 @@
-# session
-[![Build Status](https://travis-ci.org/joaosoft/session.svg?branch=master)](https://travis-ci.org/joaosoft/session) | [![codecov](https://codecov.io/gh/joaosoft/session/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/session) | [![Go Report Card](https://goreportcard.com/badge/github.com/joaosoft/session)](https://goreportcard.com/report/github.com/joaosoft/session) | [![GoDoc](https://godoc.org/github.com/joaosoft/session?status.svg)](https://godoc.org/github.com/joaosoft/session)
+# auth
+[![Build Status](https://travis-ci.org/joaosoft/auth.svg?branch=master)](https://travis-ci.org/joaosoft/auth) | [![codecov](https://codecov.io/gh/joaosoft/auth/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/auth) | [![Go Report Card](https://goreportcard.com/badge/github.com/joaosoft/auth)](https://goreportcard.com/report/github.com/joaosoft/auth) | [![GoDoc](https://godoc.org/github.com/joaosoft/auth?status.svg)](https://godoc.org/github.com/joaosoft/auth)
 
 A service that allows you to get a new session token and when invalid refresh the session token (WST, Web Security Token) [github](https://github.com/joaosoft/auth-types/wst).
 
@@ -46,7 +46,7 @@ Project dependencies are managed using Dep. Read more about [Dep](https://github
 
 >### Go
 ```
-go get github.com/joaosoft/session
+go get github.com/joaosoft/auth
 ```
 
 ## Known issues

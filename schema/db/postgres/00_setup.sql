@@ -1,9 +1,9 @@
 
 -- migrate up
-CREATE SCHEMA IF NOT EXISTS "session";
+CREATE SCHEMA IF NOT EXISTS "auth";
 
 
-CREATE OR REPLACE FUNCTION "session".function_updated_at()
+CREATE OR REPLACE FUNCTION "auth".function_updated_at()
   RETURNS TRIGGER AS $$
   BEGIN
    NEW.updated_at = now();
@@ -11,7 +11,7 @@ CREATE OR REPLACE FUNCTION "session".function_updated_at()
   END;
   $$ LANGUAGE 'plpgsql';
 
-CREATE TABLE "session"."user" (
+CREATE TABLE "auth"."user" (
 	id_user 		    TEXT PRIMARY KEY,
 	first_name		    TEXT NOT NULL,
 	last_name			TEXT NOT NULL,
@@ -24,14 +24,14 @@ CREATE TABLE "session"."user" (
 );
 
 CREATE TRIGGER trigger_user_updated_at BEFORE UPDATE
-  ON "session"."user" FOR EACH ROW EXECUTE PROCEDURE "session".function_updated_at();
+  ON "auth"."user" FOR EACH ROW EXECUTE PROCEDURE "auth".function_updated_at();
 
 
 -- migrate down
-DROP TRIGGER trigger_user_updated_at ON session."user"
+DROP TRIGGER trigger_user_updated_at ON auth."user"
 
-DROP TABLE "session"."user";
+DROP TABLE "auth"."user";
 
-DROP FUNCTION "session".function_updated_at;
+DROP FUNCTION "auth".function_updated_at;
 
-DROP SCHEMA "session";
+DROP SCHEMA "auth";

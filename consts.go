@@ -1,4 +1,4 @@
-package session
+package auth
 
 const (
 	defaultURL      = "http://localhost:8001"

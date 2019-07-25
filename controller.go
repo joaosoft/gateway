@@ -1,4 +1,4 @@
-package session
+package auth
 
 import (
 	"encoding/json"
@@ -8,11 +8,11 @@ import (
 )
 
 type Controller struct {
-	config     *SessionConfig
+	config     *AuthConfig
 	interactor *Interactor
 }
 
-func NewController(config *SessionConfig, interactor *Interactor) *Controller {
+func NewController(config *AuthConfig, interactor *Interactor) *Controller {
 	return &Controller{
 		config:     config,
 		interactor: interactor,
