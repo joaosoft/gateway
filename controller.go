@@ -42,5 +42,5 @@ func (c *Controller) redirect(ctx *web.Context, host string) error {
 		return err
 	}
 
-	return ctx.Response.Bytes(response.Status, web.ContentTypeApplicationJSON, response.Body)
+	return ctx.Response.Bytes(response.Status, response.ContentType, response.Body)
 }
