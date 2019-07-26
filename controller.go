@@ -34,7 +34,6 @@ func (c *Controller) RedirectAuth(ctx *web.Context) error {
 }
 
 func (c *Controller) redirect(ctx *web.Context, host string) error {
-
 	ctx.Request.Client = c.webClient
 	ctx.Request.Address = web.NewAddress(fmt.Sprintf("%s%s", host, ctx.Request.Address.Url))
 
