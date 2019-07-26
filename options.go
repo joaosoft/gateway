@@ -1,45 +1,45 @@
-package auth
+package gateway
 
 import (
 	logger "github.com/joaosoft/logger"
 	"github.com/joaosoft/manager"
 )
 
-// AuthOption ...
-type AuthOption func(auth *Auth)
+// GatewayOption ...
+type GatewayOption func(auth *Gateway)
 
 // Reconfigure ...
-func (auth *Auth) Reconfigure(options ...AuthOption) {
+func (gateway *Gateway) Reconfigure(options ...GatewayOption) {
 	for _, option := range options {
-		option(auth)
+		option(gateway)
 	}
 }
 
 // WithConfiguration ...
-func WithConfiguration(config *AuthConfig) AuthOption {
-	return func(auth *Auth) {
-		auth.config = config
+func WithConfiguration(config *GatewayConfig) GatewayOption {
+	return func(gateway *Gateway) {
+		gateway.config = config
 	}
 }
 
 // WithLogger ...
-func WithLogger(logger logger.ILogger) AuthOption {
-	return func(auth *Auth) {
+func WithLogger(logger logger.ILogger) GatewayOption {
+	return func(gateway *Gateway) {
 		log = logger
-		auth.isLogExternal = true
+		gateway.isLogExternal = true
 	}
 }
 
 // WithLogLevel ...
-func WithLogLevel(level logger.Level) AuthOption {
-	return func(auth *Auth) {
+func WithLogLevel(level logger.Level) GatewayOption {
+	return func(gateway *Gateway) {
 		log.SetLevel(level)
 	}
 }
 
 // WithManager ...
-func WithManager(mgr *manager.Manager) AuthOption {
-	return func(auth *Auth) {
-		auth.pm = mgr
+func WithManager(mgr *manager.Manager) GatewayOption {
+	return func(gateway *Gateway) {
+		gateway.pm = mgr
 	}
 }

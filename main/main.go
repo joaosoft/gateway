@@ -1,9 +1,11 @@
 package main
 
-import "auth"
+import (
+	"gateway"
+)
 
 func main() {
-	m, err := auth.NewAuth()
+	m, err := gateway.NewGateway()
 	if err != nil {
 		panic(err)
 	}

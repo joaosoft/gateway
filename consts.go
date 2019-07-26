@@ -1,8 +1,5 @@
-package auth
+package gateway
 
 const (
-	defaultURL      = "http://localhost:8001"
-	tokenTypeBearer = "Bearer"
-
-	claimsIdUser = "id_user"
+	defaultURL = "http://localhost:8000"
 )

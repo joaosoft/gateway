@@ -1,4 +1,4 @@
-package auth
+package gateway
 
 import logger "github.com/joaosoft/logger"
 

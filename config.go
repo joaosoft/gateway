@@ -1,29 +1,28 @@
-package auth
+package gateway
 
 import (
 	"fmt"
 
-	"github.com/joaosoft/dbr"
-
 	"github.com/joaosoft/manager"
-	migration "github.com/joaosoft/migration/services"
 )
 
 // AppConfig ...
 type AppConfig struct {
-	Auth *AuthConfig `json:"auth"`
+	Gateway *GatewayConfig `json:"gateway"`
 }
 
-// AuthConfig ...
-type AuthConfig struct {
-	Host              string                     `json:"host"`
-	Dbr               *dbr.DbrConfig             `json:"dbr"`
-	TokenKey          string                     `json:"token_key"`
-	ExpirationMinutes int64                      `json:"expiration_minutes"`
-	Migration         *migration.MigrationConfig `json:"migration"`
-	Log               struct {
+// GatewayConfig ...
+type GatewayConfig struct {
+	Host     string    `json:"host"`
+	Services *Services `json:"services"`
+	TokenKey string    `json:"token_key"`
+	Log      struct {
 		Level string `json:"level"`
 	} `json:"log"`
+}
+
+type Services struct {
+	Auth string `json:"auth"`
 }
 
 // NewConfig ...

@@ -1,28 +1,12 @@
 {
-  "auth": {
-    "host": "localhost:8001",
-    "token_key": "banana",
-    "dbr": {
-      "db": {
-        "driver": "postgres",
-        "datasource": "postgres://user:password@localhost:7000/postgres?sslmode=disable&search_path=auth"
-      }
+  "gateway": {
+    "host": "localhost:8000",
+    "services": {
+      "auth": "127.0.0.1:8001"
     },
+    "token_key": "banana",
     "log": {
       "level": "info"
-    },
-    "migration": {
-      "path": {
-        "database": "schema/db/postgres"
-      },
-      "db": {
-        "schema": "auth",
-        "driver": "postgres",
-        "datasource": "postgres://user:password@localhost:7000/postgres?sslmode=disable&search_path=auth"
-      },
-      "log": {
-        "level": "info"
-      }
     }
   },
   "manager": {

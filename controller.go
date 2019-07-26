@@ -1,99 +1,47 @@
-package auth
+package gateway
 
 import (
-	"encoding/json"
+	"fmt"
 
-	"github.com/joaosoft/validator"
 	"github.com/joaosoft/web"
 )
 
 type Controller struct {
-	config     *AuthConfig
-	interactor *Interactor
+	config    *GatewayConfig
+	webClient *web.Client
 }
 
-func NewController(config *AuthConfig, interactor *Interactor) *Controller {
+func NewController(config *GatewayConfig) (*Controller, error) {
+
+	webClient, err := web.NewClient()
+	if err != nil {
+		return nil, err
+	}
+
 	return &Controller{
-		config:     config,
-		interactor: interactor,
-	}
+		config:    config,
+		webClient: webClient,
+	}, nil
 }
 
-func (c *Controller) GetSessionHandler(ctx *web.Context) error {
-	request := &GetSessionRequest{}
-
-	err := json.Unmarshal(ctx.Request.Body, request)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusBadRequest, err)
-	}
-
-	if errs := validator.Validate(request); len(errs) > 0 {
-		return ctx.Response.JSON(web.StatusBadRequest, errs)
-	}
-
-	response, err := c.interactor.GetSession(request)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
-	}
-
+func (c *Controller) Alive(ctx *web.Context) error {
+	response := &AliveResponse{Message: "I'm alive!"}
 	return ctx.Response.JSON(web.StatusOK, response)
 }
 
-func (c *Controller) RefreshSessionHandler(ctx *web.Context) error {
-	request := &RefreshSessionRequest{
-		Authorization: ctx.Request.GetHeader(web.HeaderAuthorization),
-	}
-
-	if errs := validator.Validate(request); len(errs) > 0 {
-		return ctx.Response.JSON(web.StatusBadRequest, errs)
-	}
-
-	response, err := c.interactor.RefreshToken(request)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
-	}
-
-	return ctx.Response.JSON(web.StatusOK, response)
+func (c *Controller) RedirectAuth(ctx *web.Context) error {
+	return c.redirect(ctx, c.config.Services.Auth)
 }
 
-func (c *Controller) SignUpHandler(ctx *web.Context) error {
-	request := &SignUpRequest{}
+func (c *Controller) redirect(ctx *web.Context, host string) error {
 
-	err := json.Unmarshal(ctx.Request.Body, request)
+	ctx.Request.Client = c.webClient
+	ctx.Request.Address = web.NewAddress(fmt.Sprintf("%s%s", host, ctx.Request.Address.Url))
+
+	response, err := ctx.Request.Send()
 	if err != nil {
-		return ctx.Response.JSON(web.StatusBadRequest, err)
+		return err
 	}
 
-	if errs := validator.Validate(request); len(errs) > 0 {
-		return ctx.Response.JSON(web.StatusBadRequest, errs)
-	}
-
-	response, err := c.interactor.SignUp(request)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
-	}
-
-	return ctx.Response.JSON(web.StatusCreated, response)
-}
-
-func (c *Controller) DeactivateUserHandler(ctx *web.Context) error {
-	request := &ChangeUserStatusRequest{
-		IdUser: ctx.Request.GetUrlParam("id_user"),
-	}
-
-	err := json.Unmarshal(ctx.Request.Body, request)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusBadRequest, err)
-	}
-
-	if errs := validator.Validate(request); len(errs) > 0 {
-		return ctx.Response.JSON(web.StatusBadRequest, errs)
-	}
-
-	err = c.interactor.ChangeUserStatus(request.IdUser, false)
-	if err != nil {
-		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
-	}
-
-	return ctx.Response.NoContent(web.StatusNoContent)
+	return ctx.Response.Bytes(response.Status, web.ContentTypeApplicationJSON, response.Body)
 }
