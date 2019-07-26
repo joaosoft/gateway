@@ -6,5 +6,6 @@ import (
 )
 
 var (
-	ErrorNotFound = errors.New(errors.ErrorLevel, int(web.StatusNotFound), "user not found")
+	ErrorNotFound             = errors.New(errors.ErrorLevel, int(web.StatusNotFound), "user not found")
+	ErrorInvalidBodyParameter = errors.New(errors.ErrorLevel, int(web.StatusBadRequest), "invalid body parameter '%s'")
 )

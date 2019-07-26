@@ -82,11 +82,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:6847dd7d421742d68510c98112ed07242de86d152a351444aac9c1162ff81360"
+  digest = "1:38475a1833cb68e1775c03df3774bf725be633d6810626f0f1a850a4a8835276"
   name = "github.com/joaosoft/errors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "f583a6f1a30a9620b09aac98d5ead588736f3720"
+  revision = "02dc200db4a1a854c348c147acfd380cbeda32b3"
 
 [[projects]]
   branch = "master"
@@ -122,11 +122,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:90080ae17568fe216915ef90bf4af2e200cfc0bc992fa7f00016af75061d49d0"
+  digest = "1:db570ceec44a5ab320132185baeb94b6822e3d0a2a1d1153c32a1aac4f19aa9c"
   name = "github.com/joaosoft/validator"
   packages = ["."]
   pruneopts = "UT"
-  revision = "39760a9d03aa901a910bab81bc7f0c2dfc1f60b1"
+  revision = "41581fc57367c3c061f6ebdb1c7cd43a38a23da0"
 
 [[projects]]
   branch = "master"

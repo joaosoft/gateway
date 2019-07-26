@@ -28,11 +28,11 @@ type SessionResponse struct {
 }
 
 type SignUpRequest struct {
-	FirstName       string `json:"first_name" db:"first_name" validate:"notzero"`
-	LastName        string `json:"last_name" db:"last_name" validate:"notzero"`
-	Email           string `json:"email" db:"email" validate:"notzero, email" `
-	Password        string `json:"password" validate:"id=password"`
-	PasswordConfirm string `json:"password_confirm" validate:"value={password}"`
+	FirstName       string `json:"first_name" db:"first_name" validate:"notzero, error={InvalidBodyParameter}"`
+	LastName        string `json:"last_name" db:"last_name" validate:"notzero, error={InvalidBodyParameter}"`
+	Email           string `json:"email" db:"email" validate:"notzero, email, error={InvalidBodyParameter}" `
+	Password        string `json:"password" validate:"id=password, notzero, error={InvalidBodyParameter}"`
+	PasswordConfirm string `json:"password_confirm" validate:"notzero, value={password}, error={InvalidBodyParameter}"`
 }
 
 type SignUpResponse struct {
