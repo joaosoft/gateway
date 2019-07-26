@@ -1,6 +1,8 @@
 package auth
 
 import (
+	"crypto/md5"
+	"fmt"
 	"strings"
 	"time"
 
@@ -13,6 +15,8 @@ type IStorageDB interface {
 	GetUserByEmailAndPassword(email, password string) (*User, error)
 	GetUserByIdUserAndRefreshToken(idUser, refreshToken string) (*User, error)
 	UpdateUserRefreshToken(idUser, refreshToken string) error
+	SignUp(user *User) error
+	ChangeUserStatus(idUser string, isActive bool) error
 }
 
 type Interactor struct {
@@ -53,7 +57,7 @@ func (i *Interactor) newRefreshToken(user *User) (string, error) {
 }
 
 func (i *Interactor) GetSession(request *GetSessionRequest) (*SessionResponse, error) {
-	log.WithFields(map[string]interface{}{"method": "AddEvent"})
+	log.WithFields(map[string]interface{}{"method": "GetSession"})
 	log.Infof("getting user session [email: %s]", request.Email)
 	user, err := i.storage.GetUserByEmailAndPassword(request.Email, request.Password)
 	if err != nil {
@@ -161,4 +165,45 @@ func (i *Interactor) RefreshToken(request *RefreshSessionRequest) (*SessionRespo
 		Token:        newToken,
 		RefreshToken: newRefreshToken,
 	}, nil
+}
+
+func (i *Interactor) SignUp(request *SignUpRequest) (*SignUpResponse, error) {
+	log.WithFields(map[string]interface{}{"method": "SignUp"})
+	log.Infof("sign-up user [email: %s]", request.Email)
+
+	now := time.Now()
+	id := genUI()
+	err := i.storage.SignUp(&User{
+		IdUser:       id,
+		FirstName:    request.FirstName,
+		LastName:     request.LastName,
+		Email:        request.Email,
+		PasswordHash: fmt.Sprintf("%x", md5.Sum([]byte(request.Password))),
+		Active:       true,
+		CreatedAt:    now,
+		UpdatedAt:    now,
+	})
+	if err != nil {
+		log.WithFields(map[string]interface{}{"error": err.Error()}).
+			Errorf("error sign-up user [email: %s] %s", request.Email, err).ToError()
+		return nil, err
+	}
+
+	return &SignUpResponse{
+		IdUser: id,
+	}, nil
+}
+
+func (i *Interactor) ChangeUserStatus(idUser string, isActive bool) error {
+	log.WithFields(map[string]interface{}{"method": "SignUp"})
+	log.Infof("change user status [id: %s, active: %t]", idUser, isActive)
+
+	err := i.storage.ChangeUserStatus(idUser, isActive)
+	if err != nil {
+		log.WithFields(map[string]interface{}{"error": err.Error()}).
+			Errorf("error deactivate user [id: %s, active: %t] %s", idUser, isActive, err).ToError()
+		return err
+	}
+
+	return nil
 }

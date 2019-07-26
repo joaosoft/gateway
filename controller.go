@@ -55,3 +55,45 @@ func (c *Controller) RefreshSessionHandler(ctx *web.Context) error {
 
 	return ctx.Response.JSON(web.StatusOK, response)
 }
+
+func (c *Controller) SignUpHandler(ctx *web.Context) error {
+	request := &SignUpRequest{}
+
+	err := json.Unmarshal(ctx.Request.Body, request)
+	if err != nil {
+		return ctx.Response.JSON(web.StatusBadRequest, err)
+	}
+
+	if errs := validator.Validate(request); len(errs) > 0 {
+		return ctx.Response.JSON(web.StatusBadRequest, errs)
+	}
+
+	response, err := c.interactor.SignUp(request)
+	if err != nil {
+		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
+	}
+
+	return ctx.Response.JSON(web.StatusCreated, response)
+}
+
+func (c *Controller) DeactivateUserHandler(ctx *web.Context) error {
+	request := &ChangeUserStatusRequest{
+		IdUser: ctx.Request.GetUrlParam("id_user"),
+	}
+
+	err := json.Unmarshal(ctx.Request.Body, request)
+	if err != nil {
+		return ctx.Response.JSON(web.StatusBadRequest, err)
+	}
+
+	if errs := validator.Validate(request); len(errs) > 0 {
+		return ctx.Response.JSON(web.StatusBadRequest, errs)
+	}
+
+	err = c.interactor.ChangeUserStatus(request.IdUser, false)
+	if err != nil {
+		return ctx.Response.JSON(web.StatusInternalServerError, ErrorResponse{Code: web.StatusInternalServerError, Message: err.Error()})
+	}
+
+	return ctx.Response.NoContent(web.StatusNoContent)
+}

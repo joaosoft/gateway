@@ -15,7 +15,7 @@ A service that allows you to get a new session token and when invalid refresh th
 
     Method: GET
 
-    Route: http://localhost:8001/api/v1/get-session
+    Route: http://localhost:8001/api/v1/auth/p/get-session
     
     Body: 
     ```
@@ -29,7 +29,7 @@ A service that allows you to get a new session token and when invalid refresh th
 
     Method: PUT
     
-    Route: http://localhost:8001/api/v1/get-session
+    Route: http://localhost:8001/api/v1/auth/p/get-session
     
     Headers:
     ```

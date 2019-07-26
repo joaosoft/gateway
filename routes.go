@@ -8,7 +8,13 @@ import (
 
 func (c *Controller) RegisterRoutes(web manager.IWeb) error {
 	return web.AddRoutes(
-		manager.NewRoute(http.MethodGet, "/api/v1/get-session", c.GetSessionHandler),
-		manager.NewRoute(http.MethodPut, "/api/v1/refresh-session", c.RefreshSessionHandler),
+
+		// public routes
+		manager.NewRoute(http.MethodPost, "/api/v1/auth/p/sign-up", c.SignUpHandler),
+		manager.NewRoute(http.MethodGet, "/api/v1/auth/p/get-session", c.GetSessionHandler),
+		manager.NewRoute(http.MethodPut, "/api/v1/auth/p/refresh-session", c.RefreshSessionHandler),
+
+		// internal routes
+		manager.NewRoute(http.MethodPut, "/api/v1/auth/users/:id_user/deactivate", c.DeactivateUserHandler),
 	)
 }

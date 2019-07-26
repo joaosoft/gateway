@@ -4,9 +4,11 @@ import (
 	"bufio"
 	"encoding/json"
 	"io/ioutil"
+	"math/rand"
 	"os"
+	"time"
 
-	"strings"
+	"github.com/oklog/ulid"
 
 	errors "github.com/joaosoft/errors"
 )
@@ -93,7 +95,13 @@ func WriteFile(file string, obj interface{}) error {
 	return nil
 }
 
-func EncodeString(s string) string {
-	// http://www.postgresql.org/docs/9.2/static/sql-syntax-lexical.html
-	return `'` + strings.Replace(s, `'`, `''`, -1) + `'`
+func valUI(id string) error {
+	_, err := ulid.Parse(id)
+	return err
+}
+
+func genUI() string {
+	t := time.Now().UTC()
+	entropy := rand.New(rand.NewSource(t.UnixNano()))
+	return ulid.MustNew(ulid.Timestamp(t), entropy).String()
 }
