@@ -23,6 +23,7 @@ type GatewayConfig struct {
 
 type Services struct {
 	Auth string `json:"auth"`
+	Profile string `json:"profile"`
 }
 
 // NewConfig ...

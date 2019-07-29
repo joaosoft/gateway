@@ -30,3 +30,7 @@ func (c *Controller) Alive(ctx *web.Context) error {
 func (c *Controller) RedirectAuth(ctx *web.Context) error {
 	return ctx.Redirect(c.config.Services.Auth)
 }
+
+func (c *Controller) RedirectProfile(ctx *web.Context) error {
+	return ctx.Redirect(c.config.Services.Profile)
+}
