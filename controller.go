@@ -1,8 +1,6 @@
 package gateway
 
 import (
-	"fmt"
-
 	"github.com/joaosoft/web"
 )
 
@@ -30,17 +28,5 @@ func (c *Controller) Alive(ctx *web.Context) error {
 }
 
 func (c *Controller) RedirectAuth(ctx *web.Context) error {
-	return c.redirect(ctx, c.config.Services.Auth)
-}
-
-func (c *Controller) redirect(ctx *web.Context, host string) error {
-	ctx.Request.Client = c.webClient
-	ctx.Request.Address = web.NewAddress(fmt.Sprintf("%s%s", host, ctx.Request.Address.Url))
-
-	response, err := ctx.Request.Send()
-	if err != nil {
-		return err
-	}
-
-	return ctx.Response.Bytes(response.Status, response.ContentType, response.Body)
+	return ctx.Redirect(c.config.Services.Auth)
 }

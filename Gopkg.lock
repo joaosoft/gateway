@@ -54,12 +54,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8f43de5f050f06b986c0650d83ecf5d971e2b2008cd643c96121f64fcf36e5b0"
+  digest = "1:533a7a65b79d18c3df2f370aa56be9fe6f411ebc4695b3d7af8e7c85aaadd3b0"
   name = "github.com/joaosoft/auth-types"
   packages = [
     "basic",
     "jwt",
-    "wst",
   ]
   pruneopts = "UT"
   revision = "c69fd62ab4415c9c103eb2173d7eccb44c6b20fb"
@@ -74,27 +73,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:660ee95654649c9f20e8724f818812bb7709e180f6321017ecddf5448b69c7e7"
-  name = "github.com/joaosoft/dbr"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5a9b49024a96f62fcf6ff21c49a1ec33c076d305"
-
-[[projects]]
-  branch = "master"
   digest = "1:38475a1833cb68e1775c03df3774bf725be633d6810626f0f1a850a4a8835276"
   name = "github.com/joaosoft/errors"
   packages = ["."]
   pruneopts = "UT"
   revision = "02dc200db4a1a854c348c147acfd380cbeda32b3"
-
-[[projects]]
-  branch = "master"
-  digest = "1:1a6f8c2222f1389d860870bd218c5974894ee67801ca7117b115beec0b51ff36"
-  name = "github.com/joaosoft/json"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "f9259a6e687eda1c87df7e38e2a0013203225bce"
 
 [[projects]]
   branch = "master"
@@ -114,27 +97,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f17f3ca15695d6415d3e697282909029f6bdf3861ce9f026e1ee8b61e66a31f3"
-  name = "github.com/joaosoft/migration"
-  packages = ["services"]
-  pruneopts = "UT"
-  revision = "e24457e3d14136a81b16b559c4645cd63e3f712b"
-
-[[projects]]
-  branch = "master"
-  digest = "1:9f024c4b4b8591fb9c1e821caeef22291111905999411ae2e7a497e002216e1b"
-  name = "github.com/joaosoft/validator"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "135432b11e05afb138e74550e19f11041069bf6d"
-
-[[projects]]
-  branch = "master"
-  digest = "1:f9fcf6380f7a8005485c329939382c572f19c6722bb731fd180b8fd497c97c97"
+  digest = "1:55125aebc1bc3c70f480ea06a5f41038b8fab778a7be878b9f3f6bf683c865f5"
   name = "github.com/joaosoft/web"
   packages = ["."]
   pruneopts = "UT"
-  revision = "765d3022f0dfafcf880bd404d5950868c474112b"
+  revision = "fd41a3407ed28b6d9bf1554db3ad4998b3249d2f"
 
 [[projects]]
   branch = "master"
@@ -378,17 +345,11 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/joaosoft/auth-types/jwt",
-    "github.com/joaosoft/auth-types/wst",
-    "github.com/joaosoft/dbr",
     "github.com/joaosoft/errors",
     "github.com/joaosoft/logger",
     "github.com/joaosoft/manager",
-    "github.com/joaosoft/migration/services",
-    "github.com/joaosoft/validator",
     "github.com/joaosoft/web",
     "github.com/oklog/ulid",
-    "github.com/satori/go.uuid",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
