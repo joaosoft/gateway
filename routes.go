@@ -14,7 +14,6 @@ func (c *Controller) RegisterRoutes(web manager.IWeb) error {
 
 		// auth
 		manager.NewRoute(http.MethodPost, "/api/v1/auth/p/sign-up", c.RedirectAuth),
-		manager.NewRoute(http.MethodPost, "/api/v1/auth/p/sign-up", c.RedirectAuth),
 		manager.NewRoute(http.MethodGet, "/api/v1/auth/p/get-session", c.RedirectAuth),
 		manager.NewRoute(http.MethodPut, "/api/v1/auth/p/refresh-session", c.RedirectAuth),
 
