@@ -54,14 +54,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4cdfa41aa860801825fee5e6d29112b50ab718b79a7bb1ae87afe77119a7267a"
-  name = "github.com/joaosoft/acl"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "57f8be468ac544a94d9023ec3543a818542a5f6a"
-
-[[projects]]
-  branch = "master"
   digest = "1:533a7a65b79d18c3df2f370aa56be9fe6f411ebc4695b3d7af8e7c85aaadd3b0"
   name = "github.com/joaosoft/auth-types"
   packages = [
@@ -81,27 +73,19 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:660ee95654649c9f20e8724f818812bb7709e180f6321017ecddf5448b69c7e7"
-  name = "github.com/joaosoft/dbr"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5a9b49024a96f62fcf6ff21c49a1ec33c076d305"
-
-[[projects]]
-  branch = "master"
-  digest = "1:38475a1833cb68e1775c03df3774bf725be633d6810626f0f1a850a4a8835276"
+  digest = "1:322b31a7ca9abc5d325157c59f3b9ba232d612dc210a792eaebae5e4d185d6c7"
   name = "github.com/joaosoft/errors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "02dc200db4a1a854c348c147acfd380cbeda32b3"
+  revision = "ca3111f742816c05f282ac530763f3baca241fe3"
 
 [[projects]]
   branch = "master"
-  digest = "1:1a6f8c2222f1389d860870bd218c5974894ee67801ca7117b115beec0b51ff36"
+  digest = "1:a0045adb889d5f2a2e336847d67fa5e4aa8e5a937831bc34411c947b14cac0c5"
   name = "github.com/joaosoft/json"
   packages = ["."]
   pruneopts = "UT"
-  revision = "f9259a6e687eda1c87df7e38e2a0013203225bce"
+  revision = "34817ced19741a92754425f2f509dbf23d29cdb2"
 
 [[projects]]
   branch = "master"
@@ -113,35 +97,35 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d186a6bc0c9fac80010e000cf2583d75fe74e7b529ca2199fcbe292c757a268e"
+  digest = "1:b12cb310d52c10a8c91165d93db0d60f237cec1806edad92293ba94325475fa3"
   name = "github.com/joaosoft/manager"
   packages = ["."]
   pruneopts = "UT"
-  revision = "185d6403257c9f65a24f7165c91a4e82838bb6db"
+  revision = "d6141eb3a01a95e6b6b15476fa9565d8d259afad"
 
 [[projects]]
   branch = "master"
-  digest = "1:f17f3ca15695d6415d3e697282909029f6bdf3861ce9f026e1ee8b61e66a31f3"
+  digest = "1:f41145a7f684448d12120a7ff3dfde44c25a0fea5ff653132599250300628e12"
   name = "github.com/joaosoft/migration"
   packages = ["services"]
   pruneopts = "UT"
-  revision = "e24457e3d14136a81b16b559c4645cd63e3f712b"
+  revision = "bfe6250994bf2ebfff485db0534eef4118437353"
 
 [[projects]]
   branch = "master"
-  digest = "1:b0bad34a0aaac3a9a6d6e20d458faf220d34f2e28404ba4e1ecef128dd8ab283"
+  digest = "1:efe13b156c95ef7fab22325239948c3b0a90a6d6deafabd99e8e0d903fe26fb4"
   name = "github.com/joaosoft/validator"
   packages = ["."]
   pruneopts = "UT"
-  revision = "ccfea076b4f15f57d45650de7e687bf56c54dbba"
+  revision = "28ca7b7293444f14ef522afd5808dc18649a57ed"
 
 [[projects]]
   branch = "master"
-  digest = "1:4c6b1818f9d24aad20f83b93be43d2ac6f9bbccc2692ca71ac84b9d9390d276d"
+  digest = "1:3b1048a4c13fd6034ef3d8dc264316d7d8e25fc7b2ad41654df9cde9f5576742"
   name = "github.com/joaosoft/web"
   packages = ["."]
   pruneopts = "UT"
-  revision = "32b35d8beec3101d944a0bccc24106cf55c83534"
+  revision = "dc16ef52d3c14f319506c1f18527d777018bc5ce"
 
 [[projects]]
   branch = "master"
@@ -160,18 +144,18 @@
   version = "v3.3.10"
 
 [[projects]]
-  digest = "1:9bc108827ac1d8783dea294f1ef07732fa4ca7d6e20518c04888a85828eba4ce"
+  digest = "1:01eb0269028d3c2e21b5b6cd9b1ba81bc4170ab293fcffa84e3aa3a6138a92e8"
   name = "github.com/labstack/gommon"
   packages = [
     "color",
     "log",
   ]
   pruneopts = "UT"
-  revision = "ab0bfd9a5eba33a8c364bf3390d809ed23c31f97"
-  version = "v0.2.9"
+  revision = "7fd9f68ece0bcb1a905fac8f1549f0083f71c51b"
+  version = "v0.2.8"
 
 [[projects]]
-  digest = "1:12cb143f2148bf54bcd9fe622abac17325e85eeb1d84b8ec6caf1c80232108fd"
+  digest = "1:bc1c0be40c67b6b4aee09d7508d5a2a52c1c116b1fa43806dad2b0d6b4d4003b"
   name = "github.com/lib/pq"
   packages = [
     ".",
@@ -179,32 +163,32 @@
     "scram",
   ]
   pruneopts = "UT"
-  revision = "3427c32cb71afc948325f299f040e53c1dd78979"
-  version = "v1.2.0"
+  revision = "51e2106eed1cea199c802d2a49e91e2491b02056"
+  version = "v1.1.0"
 
 [[projects]]
-  digest = "1:5a0ef768465592efca0412f7e838cdc0826712f8447e70e6ccc52eb441e9ab13"
+  digest = "1:c568d7727aa262c32bdf8a3f7db83614f7af0ed661474b24588de635c20024c7"
   name = "github.com/magiconair/properties"
   packages = ["."]
   pruneopts = "UT"
-  revision = "de8848e004dd33dc07a2947b3d76f618a7fc7ef1"
-  version = "v1.8.1"
+  revision = "c2353362d570a7bfa228149c62842019201cfb71"
+  version = "v1.8.0"
 
 [[projects]]
-  digest = "1:7c084e0e780596dd2a7e20d25803909a9a43689c153de953520dfbc0b0e51166"
+  digest = "1:2fa7b0155cd54479a755c629de26f888a918e13f8857a2c442205d825368e084"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   pruneopts = "UT"
-  revision = "8029fb3788e5a4a9c00e415f586a6d033f5d38b3"
-  version = "v0.1.2"
+  revision = "3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
+  version = "v0.1.1"
 
 [[projects]]
-  digest = "1:9b90c7639a41697f3d4ad12d7d67dfacc9a7a4a6e0bbfae4fc72d0da57c28871"
+  digest = "1:e150b5fafbd7607e2d638e4e5cf43aa4100124e5593385147b0a74e2733d8b0d"
   name = "github.com/mattn/go-isatty"
   packages = ["."]
   pruneopts = "UT"
-  revision = "1311e847b0cb909da63b5fecfb5370aa66236465"
-  version = "v0.0.8"
+  revision = "c2a7a6ca930a4cd0bc33a3f298eb71960732a3a7"
+  version = "v0.0.7"
 
 [[projects]]
   digest = "1:53bc4cd4914cd7cd52139990d5170d6dc99067ae31c56530621b18b35fc30318"
@@ -223,20 +207,12 @@
   version = "v1.0.7"
 
 [[projects]]
-  digest = "1:860c25446f565f998eb698ddc033e9e43b2546eb950b20aca28f30ba73deb86d"
-  name = "github.com/oklog/ulid"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "be3bccf06dda9a40aa6800c4736ac77f2fef987f"
-  version = "v2.0.2"
-
-[[projects]]
-  digest = "1:93131d8002d7025da13582877c32d1fc302486775a1b06f62241741006428c5e"
+  digest = "1:e0f50a07c0def90588d69f77178712c6fdc67eb6576365f551cce98b44b501bf"
   name = "github.com/pelletier/go-toml"
   packages = ["."]
   pruneopts = "UT"
-  revision = "728039f679cbcd4f6a54e080d2219a4c4928c546"
-  version = "v1.4.0"
+  revision = "63909f0a90ab0f36909e8e044e46ace10cf13ba2"
+  version = "v1.3.0"
 
 [[projects]]
   branch = "master"
@@ -282,12 +258,12 @@
   version = "v1.0.3"
 
 [[projects]]
-  digest = "1:11118bd196646c6515fea3d6c43f66162833c6ae4939bfb229b9956d91c6cf17"
+  digest = "1:1b773526998f3dbde3a51a4a5881680c4d237d3600f570d900f97ac93c7ba0a8"
   name = "github.com/spf13/viper"
   packages = ["."]
   pruneopts = "UT"
-  revision = "b5bf975e5823809fb22c7644d008757f78a4259e"
-  version = "v1.4.0"
+  revision = "9e56dacc08fbbf8c9ee2dbc717553c758ce42bc9"
+  version = "v1.3.2"
 
 [[projects]]
   branch = "master"
@@ -315,63 +291,45 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:cb823a5f7777276059b25eaadda6a12892f3beb6d0deee01df0d8f8692ffcc82"
+  digest = "1:398e132d86665f82a3642f675cdadea673d0d1521209ebac3c378141209f99c4"
   name = "golang.org/x/crypto"
   packages = [
     "acme",
     "acme/autocert",
   ]
   pruneopts = "UT"
-  revision = "4def268fd1a49955bfb3dda92fe3db4f924f2285"
+  revision = "88737f569e3a9c7ab309cdc09a07fe7fc87233c3"
 
 [[projects]]
   branch = "master"
-  digest = "1:15a159ca3e34c429f800dd822cbb37707e98552c9523b8d07fdd244dba62f04b"
-  name = "golang.org/x/net"
-  packages = ["idna"]
-  pruneopts = "UT"
-  revision = "ca1201d0de80cfde86cb01aea620983605dfe99b"
-
-[[projects]]
-  branch = "master"
-  digest = "1:fdfd985fe7956d77128572032636b5c1b7b58a81acd7089e96923e2f9539c573"
+  digest = "1:28d862f4f9bf2d1976d1d320481bff661b7565eb876d4df2a981f79e7f40e4cd"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "cbf593c0f2f39034e9104bbf77e2ec7c48c98fc5"
+  revision = "12500544f89f9420afe9529ba8940bf72d294972"
 
 [[projects]]
-  digest = "1:8d8faad6b12a3a4c819a3f9618cb6ee1fa1cfc33253abeeea8b55336721e3405"
+  digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
   name = "golang.org/x/text"
   packages = [
-    "collate",
-    "collate/build",
-    "internal/colltab",
     "internal/gen",
-    "internal/language",
-    "internal/language/compact",
-    "internal/tag",
     "internal/triegen",
     "internal/ucd",
-    "language",
-    "secure/bidirule",
     "transform",
-    "unicode/bidi",
     "unicode/cldr",
     "unicode/norm",
-    "unicode/rangetable",
   ]
   pruneopts = "UT"
-  revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
-  version = "v0.3.2"
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [[projects]]
   digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
   name = "google.golang.org/appengine"
   packages = ["cloudsql"]
   pruneopts = "UT"
-  revision = "b2f4a3cf3c67576a2ee09e1fe62656a5086ce880"
-  version = "v1.6.1"
+  revision = "54a98f90d1c46b7731eb8fb305d2a321c30ef610"
+  version = "v1.5.0"
 
 [[projects]]
   digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
@@ -385,12 +343,11 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/joaosoft/acl",
     "github.com/joaosoft/errors",
+    "github.com/joaosoft/json",
     "github.com/joaosoft/logger",
     "github.com/joaosoft/manager",
-    "github.com/joaosoft/web",
-    "github.com/oklog/ulid",
+    "github.com/joaosoft/migration/services",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

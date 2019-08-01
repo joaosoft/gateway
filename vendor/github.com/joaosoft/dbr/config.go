@@ -1,30 +1,26 @@
-package gateway
+package dbr
 
 import (
 	"fmt"
 
 	"github.com/joaosoft/manager"
+	services "github.com/joaosoft/migration/services"
 )
 
 // AppConfig ...
 type AppConfig struct {
-	Gateway *GatewayConfig `json:"gateway"`
+	Dbr *DbrConfig `json:"dbr"`
 }
 
-// GatewayConfig ...
-type GatewayConfig struct {
-	Host     string    `json:"host"`
-	Services *Services `json:"services"`
-	TokenKey string    `json:"token_key"`
-	Log      struct {
+// DbrConfig ...
+type DbrConfig struct {
+	Db        *manager.DBConfig         `json:"db"`
+	ReadDb    *manager.DBConfig         `json:"read_db"`
+	WriteDb   *manager.DBConfig         `json:"write_db"`
+	Migration *services.MigrationConfig `json:"migration"`
+	Log       struct {
 		Level string `json:"level"`
 	} `json:"log"`
-}
-
-type Services struct {
-	Auth string `json:"auth"`
-	Profile string `json:"profile"`
-	Acl string `json:"acl"`
 }
 
 // NewConfig ...

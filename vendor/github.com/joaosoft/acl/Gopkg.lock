@@ -54,14 +54,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4cdfa41aa860801825fee5e6d29112b50ab718b79a7bb1ae87afe77119a7267a"
-  name = "github.com/joaosoft/acl"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "57f8be468ac544a94d9023ec3543a818542a5f6a"
-
-[[projects]]
-  branch = "master"
   digest = "1:533a7a65b79d18c3df2f370aa56be9fe6f411ebc4695b3d7af8e7c85aaadd3b0"
   name = "github.com/joaosoft/auth-types"
   packages = [
@@ -223,14 +215,6 @@
   version = "v1.0.7"
 
 [[projects]]
-  digest = "1:860c25446f565f998eb698ddc033e9e43b2546eb950b20aca28f30ba73deb86d"
-  name = "github.com/oklog/ulid"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "be3bccf06dda9a40aa6800c4736ac77f2fef987f"
-  version = "v2.0.2"
-
-[[projects]]
   digest = "1:93131d8002d7025da13582877c32d1fc302486775a1b06f62241741006428c5e"
   name = "github.com/pelletier/go-toml"
   packages = ["."]
@@ -385,12 +369,13 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/joaosoft/acl",
+    "github.com/joaosoft/dbr",
     "github.com/joaosoft/errors",
     "github.com/joaosoft/logger",
     "github.com/joaosoft/manager",
+    "github.com/joaosoft/migration/services",
+    "github.com/joaosoft/validator",
     "github.com/joaosoft/web",
-    "github.com/oklog/ulid",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
