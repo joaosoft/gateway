@@ -54,14 +54,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4cdfa41aa860801825fee5e6d29112b50ab718b79a7bb1ae87afe77119a7267a"
-  name = "github.com/joaosoft/acl"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "57f8be468ac544a94d9023ec3543a818542a5f6a"
-
-[[projects]]
-  branch = "master"
   digest = "1:533a7a65b79d18c3df2f370aa56be9fe6f411ebc4695b3d7af8e7c85aaadd3b0"
   name = "github.com/joaosoft/auth-types"
   packages = [
@@ -81,27 +73,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:660ee95654649c9f20e8724f818812bb7709e180f6321017ecddf5448b69c7e7"
-  name = "github.com/joaosoft/dbr"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5a9b49024a96f62fcf6ff21c49a1ec33c076d305"
-
-[[projects]]
-  branch = "master"
   digest = "1:38475a1833cb68e1775c03df3774bf725be633d6810626f0f1a850a4a8835276"
   name = "github.com/joaosoft/errors"
   packages = ["."]
   pruneopts = "UT"
   revision = "02dc200db4a1a854c348c147acfd380cbeda32b3"
-
-[[projects]]
-  branch = "master"
-  digest = "1:1a6f8c2222f1389d860870bd218c5974894ee67801ca7117b115beec0b51ff36"
-  name = "github.com/joaosoft/json"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "f9259a6e687eda1c87df7e38e2a0013203225bce"
 
 [[projects]]
   branch = "master"
@@ -118,22 +94,6 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "185d6403257c9f65a24f7165c91a4e82838bb6db"
-
-[[projects]]
-  branch = "master"
-  digest = "1:f17f3ca15695d6415d3e697282909029f6bdf3861ce9f026e1ee8b61e66a31f3"
-  name = "github.com/joaosoft/migration"
-  packages = ["services"]
-  pruneopts = "UT"
-  revision = "e24457e3d14136a81b16b559c4645cd63e3f712b"
-
-[[projects]]
-  branch = "master"
-  digest = "1:b0bad34a0aaac3a9a6d6e20d458faf220d34f2e28404ba4e1ecef128dd8ab283"
-  name = "github.com/joaosoft/validator"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "ccfea076b4f15f57d45650de7e687bf56c54dbba"
 
 [[projects]]
   branch = "master"
@@ -385,7 +345,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/joaosoft/acl",
     "github.com/joaosoft/errors",
     "github.com/joaosoft/logger",
     "github.com/joaosoft/manager",

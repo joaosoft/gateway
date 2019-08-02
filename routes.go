@@ -3,7 +3,6 @@ package gateway
 import (
 	"github.com/joaosoft/manager"
 	"github.com/joaosoft/web"
-	"github.com/joaosoft/acl"
 )
 
 func (c *Controller) RegisterRoutes(w manager.IWeb) error {
@@ -24,8 +23,9 @@ func (c *Controller) RegisterRoutes(w manager.IWeb) error {
 		manager.NewRoute(string(web.MethodGet), "/api/v1/profile/sections/contents", c.RedirectProfile),
 		manager.NewRoute(string(web.MethodGet), "/api/v1/profile/sections/:section_key", c.RedirectProfile),
 		manager.NewRoute(string(web.MethodGet), "/api/v1/profile/sections/:section_key/contents", c.RedirectProfile),
+
+		// acl
+		manager.NewRoute(string(web.MethodGet), "/api/v1/acl/roles/:role_key/pages/:resource_page_key/resources", c.RedirectAcl),
+		manager.NewRoute(string(web.MethodGet), "/api/v1/acl/roles/:role_key/resources/types/:resource_type_key", c.RedirectAcl),
 	)
-
-	w.AddFilter("*", string(web.PositionBefore), acl.MiddlewareAcl(), string(web.MethodGet))
-
 }
