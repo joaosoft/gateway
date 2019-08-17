@@ -5,7 +5,9 @@ FROM golang:alpine AS builder
 
 LABEL maintainer="João Ribeiro <joaosoft@gmail.com>"
 
-RUN apk update && apk add --no-cache dep
+RUN apk update && apk add --no-cache \
+	dep \
+	git
 
 WORKDIR /go/src/gateway
 COPY . .
