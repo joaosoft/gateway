@@ -1,8 +1,16 @@
+env:
+	docker-compose up -d
+
 run:
 	go run ./bin/launcher/main.go
 
 build:
 	docker build -t gateway:1.0 .
+
+push:
+	docker login --username joaosoft --password JoAo1081321
+	docker tag gateway:1.0 joaosoft/gateway
+	docker push joaosoft/gateway
 
 fmt:
 	go fmt ./...
