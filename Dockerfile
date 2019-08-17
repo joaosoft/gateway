@@ -16,8 +16,9 @@ COPY . .
 
 RUN dep ensure
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gateway .
+RUN GOOS=linux GOARCH=arm GOARM=5 CGO_ENABLED=0 go build -a -installsuffix cgo -o gateway .
 
+RUN chmod +x gateway
 
 
 ############################
@@ -26,4 +27,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gateway .
 FROM scratch
 COPY --from=builder /go/src/gateway/gateway .
 
-ENTRYPOINT ./gateway
+EXPOSE 8000
+ENTRYPOINT ["./gateway"]
