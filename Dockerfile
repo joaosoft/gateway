@@ -28,6 +28,7 @@ RUN chmod +x gateway
 ############################
 FROM scratch
 COPY --from=builder /go/src/gateway/gateway .
+COPY config config
 
 EXPOSE 8000
 ENTRYPOINT ["./gateway"]
