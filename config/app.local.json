@@ -2,9 +2,9 @@
   "gateway": {
     "host": "localhost:8000",
     "services": {
-      "auth": "127.0.0.1:8001",
-      "profile": "127.0.0.1:8002",
-      "acl": "127.0.0.1:8003"
+      "auth": "auth:8001",
+      "profile": "profile:8002",
+      "acl": "acl:8003"
     },
     "token_key": "banana",
     "log": {
