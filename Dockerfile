@@ -26,7 +26,15 @@ RUN chmod +x gateway
 ############################
 # STEP 2 run binary
 ############################
-FROM scratch
+#FROM scratch
+FROM alpine:latest
+
+RUN apk update && apk --no-cache add \
+	ca-certificates \
+	curl \
+	curl \
+	bash
+
 COPY --from=builder /go/src/gateway/gateway .
 COPY ./config config
 
