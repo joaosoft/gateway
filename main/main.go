@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gateway"
+	"github.com/joaosoft/gateway"
 )
 
 func main() {
